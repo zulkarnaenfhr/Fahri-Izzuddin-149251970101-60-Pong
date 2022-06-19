@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
-    public Transform spanwArea;
+    public Transform spawnarea;
     public int maxPowerUpAmount;
     public int spawnInterval;
 
@@ -23,7 +23,6 @@ public class PowerUpManager : MonoBehaviour
     {
         powerUpList = new List<GameObject>();
         timer = 0;
-
     }
 
     private void Update()
@@ -41,7 +40,7 @@ public class PowerUpManager : MonoBehaviour
     {
         GenerateRandomPowerUp(new Vector2(Random.Range(powerUpAreaMin.x, powerUpAreaMax.x), Random.Range(powerUpAreaMin.y, powerUpAreaMax.y)));
     }
-
+ 
     public void GenerateRandomPowerUp(Vector2 position) 
     {
         if (powerUpList.Count >= maxPowerUpAmount)
@@ -59,7 +58,7 @@ public class PowerUpManager : MonoBehaviour
 
         int randomIndex = Random.Range(0, powerUpTemplateList.Count);
 
-        GameObject powerUp = Instantiate(powerUpTemplateList[randomIndex], new Vector3(position.x, position.y, powerUpTemplateList[randomIndex].transform.position.z), Quaternion.identity,spanwArea);
+        GameObject powerUp = Instantiate(powerUpTemplateList[randomIndex], new Vector3(position.x, position.y, powerUpTemplateList[randomIndex].transform.position.z), Quaternion.identity,spawnarea);
         powerUp.SetActive(true);
 
         powerUpList.Add(powerUp);
